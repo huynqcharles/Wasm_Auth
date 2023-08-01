@@ -40,7 +40,7 @@ namespace BlazorWebAssembly_Authorization.Client.Services
                 return loginResponse;
             }
             await this.localStorageService.SetItemAsync("authToken", loginResponse.Token);
-            ((CustomAuthenticationStateProvider)this.authenticationStateProvider).MarkUserAsAuthenticated(loginUser.UserName);
+            ((CustomAuthenticationStateProvider)this.authenticationStateProvider).MarkUserAsAuthenticatedAsync(loginUser.UserName);
             this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponse.Token);
             return loginResponse;
         }

@@ -12,7 +12,7 @@
         <div class="top-row">
             <AuthorizeView>
                 <Authorized>
-                    Hi, @context.User.FindFirstValue(ClaimTypes.Role) @context.User.FindFirstValue(ClaimTypes.NameIdentifier)
+                    Hi, @context.User.FindFirstValue(ClaimTypes.Role) - @context.User.FindFirstValue(ClaimTypes.NameIdentifier)
                     <a class="btn btn-danger" href="/logout">Logout</a>
                 </Authorized>
                 <NotAuthorized>

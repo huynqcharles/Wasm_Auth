@@ -32,10 +32,12 @@ namespace BlazorWebAssembly_Authorization.Client.Extensions
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(savedToken), "jwt")));
         }
 
-        public void MarkUserAsAuthenticated(string userName)
+        public void MarkUserAsAuthenticatedAsync(string userName)
         {
-            var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, userName) }));
-            var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
+            var authState = GetAuthenticationStateAsync();
+
+            //var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, userName) }));
+            //var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
             NotifyAuthenticationStateChanged(authState);
         }
 
